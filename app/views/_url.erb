@@ -1,0 +1,30 @@
+  <h1>Our URL shortener!</h1>
+
+  <form action='/' method='POST'>
+    <label for='user_input'>Enter your URL here</label>
+    <input id='user_input' type="text" name='long_url' placeholder="e.g. 'http://www.google.com'"/>
+    <input type="Submit" value="Shorten it!"/>
+  </form>
+  <br>
+
+<% if @available_urls %>
+  <table>
+    <tr>
+      <th>Original URL</th>
+      <th>Shortened URL</th>
+      <th>Click Count</th>
+    </tr>
+    <% @available_urls.each do |url| %>
+      <tr>
+        <td><%= url.original %></td>
+        <td><a href=<%= url.shortened %>><%= url.shortened %></a></td>
+        <td><%= url.counter %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<% if @user %>
+  <a href="/logout">Click here to logout</a>
+<% end %>
+

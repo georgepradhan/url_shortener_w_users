@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
-  # users.password_hash in the database is a :string
-
   include BCrypt
+
+  has_many :urls
 
   def password
     @password ||= Password.new(password_hash)
@@ -15,12 +14,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(given_email, given_password)
     user = User.find_by_email(given_email)
-    if user.password == given_password
-      user
-    else
-      nil
-    end
+    user.password == given_password ? user : nil
   end
 
 end
-

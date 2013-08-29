@@ -1,0 +1,8 @@
+<% if @errors %>
+  <h4>You had the following errors...</h4>
+  <ul>
+    <%@errors.each do |error| %>
+      <li><%=error%></li>
+    <%end%>
+  </ul>
+<% end %>
