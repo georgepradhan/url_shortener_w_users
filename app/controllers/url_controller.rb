@@ -1,6 +1,5 @@
 post '/' do
   if Url.find_by_original(normalize(params[:long_url]))
-    url = Url.find_by_original(normalize(params[:long_url]))
     redirect '/'
   else
     url = Url.new(original: params[:long_url])
